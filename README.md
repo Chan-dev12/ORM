@@ -19,6 +19,87 @@ Execute Django admin and create details for 10 books
 
 # PROGRAM
 ```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp Power Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 310px;
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lamp Power Calculator</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="number" name="intensity" step="any" placeholder="Intensity (I)" required>
+            <input type="number" name="resistance" step="any" placeholder="Resistance (R)" required>
+            <button type="submit">Calculate Power</button>
+            <input type="text" id="ans" value="{{power}}" readonly>
+        </form>
+        {% if result is not None %}
+            <div class="result">
+                <strong>Power (P):</strong> {{ result }} Watts
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
 models.py
 
 from django.db import models
